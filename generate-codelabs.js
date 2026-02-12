@@ -1,39 +1,43 @@
 const fs = require('fs');
 const path = require('path');
 
-// Root where this script lives
 const rootDir = __dirname;
-
-// Codelabs live inside docs/
 const codelabsDir = path.join(rootDir, 'docs');
-
-// Output file inside docs/
 const outputFile = path.join(codelabsDir, 'codelabs-list.js');
 
 const codelabs = [];
 
-// Loop through all folders inside docs/
 fs.readdirSync(codelabsDir, { withFileTypes: true }).forEach(dir => {
-  if (dir.isDirectory()) {
-    const jsonPath = path.join(codelabsDir, dir.name, 'codelab.json');
-    if (fs.existsSync(jsonPath)) {
-      const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  if (!dir.isDirectory()) return;
 
-      codelabs.push({
-        title: data.title,
-        duration: data.duration + " min",
-        href: `/codelabs/${dir.name}/index.html`, // absolute path from web root
-        id: data.id,
-        authors: data.authors,
-        updated: data.updated,
-        category: data.category,
-        tags: data.tags
-      });
+  const folderPath = path.join(codelabsDir, dir.name);
+  const jsonPath = path.join(folderPath, 'codelab.json');
+  const indexPath = path.join(folderPath, 'index.html');
+
+  // Skip if neither codelab.json nor index.html exists
+  if (!fs.existsSync(jsonPath) && !fs.existsSync(indexPath)) return;
+
+  let data = {};
+  if (fs.existsSync(jsonPath)) {
+    try {
+      data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+    } catch (err) {
+      console.warn(`⚠️ Failed to parse JSON in ${jsonPath}:`, err.message);
     }
   }
+
+  codelabs.push({
+    title: data.title || dir.name,
+    duration: data.duration ? `${data.duration} min` : 'N/A',
+    href: fs.existsSync(indexPath) ? `${dir.name}/index.html` : '#',
+    id: data.id || dir.name,
+    authors: data.authors || [],
+    updated: data.updated || null,
+    category: data.category || 'Uncategorized',
+    tags: data.tags || []
+  });
 });
 
-// Write JS file into docs/
+// Write output
 fs.writeFileSync(outputFile, `window.CODELABS = ${JSON.stringify(codelabs, null, 2)};`);
-
-console.log("✅ codelabs-list.js generated in docs/");
+console.log(`✅ codelabs-list.js generated in docs/ (${codelabs.length} codelabs found)`);
