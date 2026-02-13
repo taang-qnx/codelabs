@@ -106,8 +106,18 @@ claat --help
       </google-codelab-step>
     
       <google-codelab-step label="Setup Repo for Codelab" duration="2">
-        <p>1.Fork <a href="https://github.com/qnx/codelabs" target="_blank">QNX Codelabs Repo</a></p>
-<p>2.Clone the QNX codelabs repo: <code>bash git clone https://github.com/qnx/codelabs.git</code> 3. If using SSH: <code>bash git clone git@github.com:qnx/codelabs.git</code> 4. Work on a <strong>new branch</strong> when creating or editing codelabs <code>bash git checkout -b <name-of-your-codelab></code></p>
+        <ol type="1">
+<li>Fork <a href="https://github.com/qnx/codelabs" target="_blank">QNX Codelabs Repo</a></li>
+<li>Clone the QNX codelabs repo:<pre><code language="language-bash" class="language-bash">git clone https://github.com/qnx/codelabs.git
+</code></pre>
+</li>
+<li>If using SSH:<pre><code language="language-bash" class="language-bash">git clone git@github.com:qnx/codelabs.git
+</code></pre>
+</li>
+<li>Work on a <strong>new branch</strong> when creating or editing codelabs<pre><code language="language-bash" class="language-bash">git checkout -b &lt;name-of-your-codelab&gt;
+</code></pre>
+</li>
+</ol>
 
 
       </google-codelab-step>
@@ -116,20 +126,10 @@ claat --help
         <p>This section explains how to create a new codelab.</p>
 <p>You will only work in the <code>markdown</code> folder under your created codelab repo.<br> Ensure you do <strong>not</strong> make any changes to other folders or files to successfully contribute to our codelabs.<br> Inconsistencies or changes to other files will unfortunately result in a rejected Pull Request.</p>
 <ol type="1">
-<li>Create a New Folder</li>
-</ol>
-<p>Create a new folder for your codelab:</p>
-<pre><code>```bash
-mkdir -p ./codelabs/markdown/&lt;name-of-your-codelab&gt;
-```
+<li>Create a New Folder for your codelab:<pre><code language="language-bash" class="language-bash">mkdir -p ./codelabs/markdown/&lt;name-of-your-codelab&gt;
 </code></pre>
-<ol type="1" start="2">
-<li>Create a New Folder</li>
-</ol>
-<p>Copy markdown-template.md into your newly created folder to ensure the required tags are included.</p>
-<p>The id tag must exactly match the .md filename for claat to work correctly.</p>
-<pre><code>```bash
-id: name-of-your-codelab
+</li>
+<li>Create a New Folder and copy markdown-template.md into your newly created folder to  ensure the required tags are included.The id tag must exactly match the .md filename for claat to work correctly.<pre><code language="language-bash" class="language-bash">id: name-of-your-codelab
 title: template to create codelabs
 summary: Learn how to add new Codelabs
 categories: codelabs, setup
@@ -138,9 +138,9 @@ difficulty: 1
 status: published
 authors: Your Team
 feedback_link: https://github.com/qnx/codelabs/issues
-```
+
 </code></pre>
-<ol type="1" start="3">
+</li>
 <li>Rename the markdown file as </li>
 <li>(Optional) Run claat to view your .md file locally as html. Otherwise, skip to step 7<pre><code language="language-bash" class="language-bash">//cd out from ~./markdown/&lt;name-of-your-codelab&gt; folder to ~./codelabs
 

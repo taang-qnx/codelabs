@@ -89,9 +89,9 @@ Duration: 1:00
 ## Setup Repo for Codelab
 Duration: 2:00
 
-1.Fork [QNX Codelabs Repo](https://github.com/qnx/codelabs)
+1. Fork [QNX Codelabs Repo](https://github.com/qnx/codelabs)
 
-2.Clone the QNX codelabs repo:
+2. Clone the QNX codelabs repo:
     ```bash
     git clone https://github.com/qnx/codelabs.git
     ```
@@ -115,20 +115,17 @@ You will only work in the `markdown` folder under your created codelab repo.
 Ensure you do **not** make any changes to other folders or files to successfully contribute to our codelabs.  
 Inconsistencies or changes to other files will unfortunately result in a rejected Pull Request.
 
-1. Create a New Folder
-
-Create a new folder for your codelab:
+1. Create a New Folder for your codelab:
 
     ```bash
     mkdir -p ./codelabs/markdown/<name-of-your-codelab>
     ```
-2. Create a New Folder
+2. Create a New Folder and copy markdown-template.md into your newly created folder to  ensure the required tags are included.
 
-Copy markdown-template.md into your newly created folder to ensure the required tags are included.
-
-The id tag must exactly match the .md filename for claat to work correctly.
+    The id tag must exactly match the .md filename for claat to work correctly.
 
     ```bash
+
     id: name-of-your-codelab
     title: template to create codelabs
     summary: Learn how to add new Codelabs
@@ -138,6 +135,7 @@ The id tag must exactly match the .md filename for claat to work correctly.
     status: published
     authors: Your Team
     feedback_link: https://github.com/qnx/codelabs/issues
+    
     ```
 
 3. Rename the markdown file as <name-of-your-codelab>
