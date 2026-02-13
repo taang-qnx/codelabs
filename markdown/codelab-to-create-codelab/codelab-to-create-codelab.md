@@ -27,6 +27,8 @@ QNX Customized Claat Tool used in this codelab - [Github Repo ](https://github.c
 
 Forum for Codelab Authors - [Forum Link](https://groups.google.com/forum/#!forum/codelab-authors)
 
+View the markdown for this codelab - [Markdown File] (https://raw.githubusercontent.com/qnx/codelabs/refs/heads/main/markdown/codelab-to-create-codelab/codelab-to-create-codelab.md)
+
 ### Video
 Video showing **how to create your own Codelab** and **contribute to QNX**
 
