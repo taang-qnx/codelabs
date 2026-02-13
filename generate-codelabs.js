@@ -28,7 +28,7 @@ fs.readdirSync(codelabsDir, { withFileTypes: true }).forEach(dir => {
 
   codelabs.push({
     title: data.title || dir.name,
-    duration: data.duration ? `${data.duration} min` : 'N/A',
+    //duration: data.duration ? `${data.duration} min` : 'N/A',
     href: fs.existsSync(indexPath) ? `${dir.name}/index.html` : '#',
     id: data.id || dir.name,
     authors: data.authors || [],
