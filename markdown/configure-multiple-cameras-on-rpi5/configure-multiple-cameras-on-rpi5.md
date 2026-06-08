@@ -43,7 +43,7 @@ sudo apk add qnx-sensor-framework
 
 ```
 
-If these packages are already in the OSS Dashboard, build (use `abuild -r`) and transfer these packages into the RPI5 and then install
+If these APK packages are not yet listed in the OSS Dashboard, build (use `abuild -r`) and transfer these packages into the RPI5 and then install
 
 ```sh
 sudo apk add qnx-devu-hcd-dwc3-xhci-8.0.4-r0.apk --allow-untrusted
