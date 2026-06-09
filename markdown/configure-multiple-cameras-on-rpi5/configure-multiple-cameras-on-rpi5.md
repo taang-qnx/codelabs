@@ -308,3 +308,37 @@ camera_mux -n 3
 
 The following is the moment when three cameras are multipexed
 ![Multiplex 3 Cameras](multiplex-cameras.jpg)
+
+## Troubleshooting
+### Validate the 2 camera module 3 are detected
+Run `slog2info -b sensor_service`
+You will find similar output as follows:
+```sh
+...
+Jan 01 00:00:11.249          sensor_service.913444                 info      0  int main(int, char**)(620): Initializing of platform completed
+Jan 01 00:00:11.249          sensor_service.913444                debug      1  [ext]int getResolutions(platform_external_handle_t, sensor_unit_t, camera_frametype_t, int*, const camera_res_t**)(945): Camera 1: 2 resolutions for type 1
+Jan 01 00:00:11.249          sensor_service.913444                debug      1  [ext]int getFramerates(platform_external_handle_t, sensor_unit_t, camera_res_t*, camera_frametype_t, int*, bool*, float*)(989): Camera 1: rates 1, type 1, resolution 2304 x 1296 maxmin 0
+...
+Jan 01 00:00:11.250          sensor_service.913444                debug      1  [ext]int getResolutions(platform_external_handle_t, sensor_unit_t, camera_frametype_t, int*, const camera_res_t**)(945): Camera 2: 2 resolutions for type 1
+Jan 01 00:00:11.250          sensor_service.913444                debug      1  [ext]int getFramerates(platform_external_handle_t, sensor_unit_t, camera_res_t*, camera_frametype_t, int*, bool*, float*)(989): Camera 2: rates 1, type 1, resolution 2304 x 1296 maxmin 0
+...
+
+```
+If Camera Module 3 is not detected, inspect the ribbons to ensure that they are tightly connected to the ports of the RPI5.
+
+### Validate the Logitech camera is detected
+Run `usb` or `usb -vvv` if more details are required.
+
+You will find similar output as follows:
+```sh
+...
+USB 1 (XHCI) v10.00, v1.01 DDK, v2.00 HCD, DLL: Active
+
+Device Address             : 1
+Vendor                     : 0x046d (Logitech)
+Product                    : 0x08e5 (HD Pro Webcam C920)
+Class                      : 0xef (Miscellaneous)
+Subclass                   : 0x02
+Protocol                   : 0x01
+...
+```
