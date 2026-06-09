@@ -9,22 +9,21 @@ authors: Terence Ang
 feedback_link: https://github.com/qnx/codelabs/issues
 
 
-# Configure multiple camera sources on QNX QSTI
+# Configure multiple camera sources on Raspberry PI 5
 
 ## Introduction
-We are preparing the instruction for configure multiple camera sources on QNX QSTI.  In this codelab, instructions are provided to enable multiple camera sources.
+We are preparing the instruction for configure multiple camera sources on Raspberry PI 5.  In this codelab, instructions are provided to enable multiple camera sources.
 
-## Pre-requisites
+## Prerequisites
 ### Hardware
 - 1 x Raspberry PI 5
 - 2 x Camera Module 3
-- 1 x Logitech C920x
+- 1 x Logitech C920x (or C920)
 
 ### QuickStart Target Image (QSTI)
 - At the host, launch QNX Software Center and install the QSTI image of QNX 8.0, say, com.qnx.qnx800.quickstart.rpi5/0.5.0.00319T202605190151L
 - Use Raspberry PI Imager or other imaging tool to load the image onto the SD card
 - Insert the SD card toe the RPI5 and plugin in power source
-
 
 ### Dependent packages
 Install the following packages
@@ -42,7 +41,6 @@ sudo apk add qnx-devu-hcd-dwc3-xhci
 sudo apk add qnx-sensor-framework
 
 ```
-
 If these APK packages are not yet listed in the OSS Dashboard, build (use `abuild -r`) and transfer these packages into the RPI5 and then install
 
 ```sh
@@ -60,19 +58,17 @@ sudo apk add qnx-sensor-framework-8.0.4-r0.apk --allow-untrusted
 
 ```
 
-
 ## Hardware Configuration
-### Connect 2 Camera Module 3 into the DISP0 and DISP1 ports as follows:
+### Connect 2 Camera Module 3 to the DISP0 and DISP1 ports as follows:
 ![Connect 2 Camera Module 3](connect-2-camera-module-3.jpg)
 
-
-### Connect 1 Logitech C920x (or C920) into the one of the USB ports as follows:
+### Connect Logitech C920x (or C920) to one of the USB ports as follows:
 ![Connect Logitech C920x](connect-logitech-c920x.jpg)
 
 ## Startup script configuration
 ### Enable 2 Camera Modules
 To enable 2 camera modules, we need to
-- Enable IRQ 11, 13, 47, 48 `with msix-rp1` and `gpio-rp1`
+- Enable IRQ 11, 13, 47, 48 with `msix-rp1` and `gpio-rp1`
 - Enable i2c4 and i2c6 with `i2c-dwc-rpi5`
 - Enable `sensor` at startup with `rpi5_camera_module3.conf`
 
@@ -149,7 +145,6 @@ index eecdafa..6c0a345 100755
 ### Enable Logitech C920x (or C920) as the third camera
 To enable Logitech C920x in addition to the 2 camera module 3,
 
-
 - Duplicate `/usr/etc/config/sensor/rpi5_camera_module3.conf` to `/usr/etc/config/sensor/usb_and_cam3.conf`
 - Patch `/usr/etc/config/sensor/usb_and_cam3.conf`.
 ```sh
@@ -177,7 +172,7 @@ index b693684..8e17101 100644
 
 - Modify `/usr/etc/startup/post_startup.sh` to
   - point to `/usr/etc/config/sensor/usb_and_cam3.conf`
-  - wati for `/dev/sensor/camera3`
+  - wait for `/dev/sensor/camera3`
 ```sh
 ...
     sensor -U 521:521 -b external -r /data/share/sensor -c /system/etc/config/sensor/usb_and_cam3.conf
@@ -216,7 +211,7 @@ The output will be as follows:
   913444 sensor -U 521:521 -b external -r /data/share/sensor -c /system/etc/config/sensor/rpi5_camera_module3.conf
 ```
 
-If Logitech C920x (or C920) was also enabled as third camera,
+If Logitech C920x (or C920) was also enabled as the third camera,
 
 The output will be as follows:
 ```sh
@@ -225,7 +220,7 @@ The output will be as follows:
 ```
 
 
-### Validate that i2c are configured properly at `-q0xab` and `-q0xad`, `with i2c-dwc-rpi5`
+### Validate that i2c are configured properly at `-q0xab` and `-q0xad`, with `i2c-dwc-rpi5`
 ```sh
 [root@qnxpi ~]# pidin ar | grep i2c-dwc-rpi5
   671765 /system/bin/i2c-dwc-rpi5 -p0x1f00074000 -c200000000 -q0xa8
@@ -290,15 +285,15 @@ If Logitech C920x (or C920) was also enabled as third camera, run following as w
 ```
 
 ### Switch between cameras
-If a USB keyboard is attached to RPI5, you can press `Alt` + `Tab` to switch between the cameras
+If a USB keyboard is attached to RPI5, you can press `Alt` + `Tab` to switch between the cameras.
 
 
 ### Multiplex the cameras
-The cameras can be multiplexed at the same time using `camera_mux -n N`, where N is the total number of cameras to be muli-plexed.
+The cameras can be multiplexed at the same time using `camera_mux -n N`, where N is the total number of cameras to be multiplexed.
 
 However, currently the process `fullscreen-winmgr` restricts on this.
 
-We need to kill the service, `fullscreen-winmgr`, before multiplexing is possible
+We need to stop the service, `fullscreen-winmgr`, before multiplexing the cameras.
 ```sh
 slay fullscreen-winmgr
 cameera_mux -N 2
