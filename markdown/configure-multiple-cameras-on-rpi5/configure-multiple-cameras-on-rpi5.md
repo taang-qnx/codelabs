@@ -28,34 +28,21 @@ We are preparing the instruction for configure multiple camera sources on Raspbe
 ### Dependent packages
 Install the following packages
 ```sh
-sudo apk add qnx-devu-hcd-dwc3-xhci
-sudo apk add qnx-io-usb-otg
-sudo apk add qnx-libpci
-sudo apk add qnx-multimedia-framework
-sudo apk add qnx-sensor-framework-camera-imx708
-sudo apk add qnx-sensor-framework-rpi-camera-ipa
-sudo apk add qnx-sensor-framework-rpi5
-sudo apk add qnx-sensor-framework-utils
-sudo apk add qnx-usb
-sudo apk add qnx-devu-hcd-dwc3-xhci
-sudo apk add qnx-sensor-framework
-
-```
-If these APK packages are not yet listed in the OSS Dashboard, build (use `abuild -r`) and transfer these packages into the RPI5 and then install
-
-```sh
-sudo apk add qnx-devu-hcd-dwc3-xhci-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-io-usb-otg-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-libpci-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-multimedia-framework-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-sensor-framework-camera-imx708-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-sensor-framework-rpi-camera-ipa-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-sensor-framework-rpi5-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-sensor-framework-utils-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-usb-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-devu-hcd-dwc3-xhci-8.0.4-r0.apk --allow-untrusted
-sudo apk add qnx-sensor-framework-8.0.4-r0.apk --allow-untrusted
-
+sudo apk add \
+    yaml \
+    libturbojpeg \
+    qnx-egl \
+    qnx-gles \
+    qnx-screen \
+    qnx-devu-hcd-dwc3-xhci \
+    qnx-sensor-framework-rpi-camera-ipa \
+    qnx-io-usb-otg \
+    qnx-usb \
+    qnx-multimedia-framework \
+    qnx-sensor-framework \
+    qnx-sensor-framework-camera-imx708 \
+    qnx-sensor-framework-rpi5 \
+    qnx-sensor-framework-utils
 ```
 
 ## Hardware Configuration
@@ -73,13 +60,18 @@ To enable 2 camera modules, we need to
 - Enable `sensor` at startup with `rpi5_camera_module3.conf`
 
 
-To achive above,
+To achieve above,
 - Login as `root`
+```sh
+sudo su -
+```
 - Backup `/usr/etc/startup/post_startup.sh`
-- apply the following patch, `post_startup.sh.diff`,
-
 ```sh
 cp -p /usr/etc/startup/post_startup.sh /usr/etc/startup/post_startup.sh.org
+```
+- apply the following patch, `post_startup.sh.diff`, and restart
+
+```sh
 cd /usr/etc/startup
 patch -p1 -i post_startup.sh.diff
 ```
@@ -146,7 +138,17 @@ index eecdafa..6c0a345 100755
 To enable Logitech C920x in addition to the 2 camera module 3,
 
 - Duplicate `/usr/etc/config/sensor/rpi5_camera_module3.conf` to `/usr/etc/config/sensor/usb_and_cam3.conf`
-- Patch `/usr/etc/config/sensor/usb_and_cam3.conf`.
+```sh
+cp /usr/etc/config/sensor/rpi5_camera_module3.conf /usr/etc/config/sensor/usb_and_cam3.conf
+```
+
+- apply the following patch, `usb_and_cam3.conf.diff`,
+```sh
+cd /usr/etc/config/sensor
+patch -p1 -i usb_and_cam3.conf.diff
+```
+
+- The patch, `usb_and_cam3.conf.diff`, is as follows:
 ```sh
 diff --git a/usb_and_cam3.conf b/usb_and_cam3.conf
 index b693684..8e17101 100644
@@ -296,12 +298,12 @@ However, currently the process `fullscreen-winmgr` restricts on this.
 We need to stop the service, `fullscreen-winmgr`, before multiplexing the cameras.
 ```sh
 slay fullscreen-winmgr
-cameera_mux -N 2
+camera_mux -n 2
 ```
 
 If Logitech C920x (or C920) was also enabled as third camera, run
 ```sh
-cameera_mux -N 3
+camera_mux -n 3
 ```
 
 The following is the moment when three cameras are multipexed
