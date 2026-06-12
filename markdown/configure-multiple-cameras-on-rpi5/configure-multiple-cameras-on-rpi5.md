@@ -23,7 +23,7 @@ This codelab describes how to configure multiple camera sources on the Raspberry
 ### QuickStart Target Image (QSTI)
 - On the host, launch QNX Software Center and install the QSTI image for QNX 8.0, for example:
 com.qnx.qnx800.quickstart.rpi5/0.5.0.00319T202605190151L
-- Use Raspberry PI Imager or other imaging tool to load the image onto the SD card
+- Use Raspberry Pi Imager or another imaging tool to write the image to the SD card.
 - Insert the SD card toe the RPI5 and plugin in power source
 
 ### Dependent packages
