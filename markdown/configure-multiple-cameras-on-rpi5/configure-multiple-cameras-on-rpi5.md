@@ -296,7 +296,7 @@ The cameras can be multiplexed at the same time using `camera_mux -n N`, where N
 
 However, currently the process `fullscreen-winmgr` restricts on this.
 
-We need to stop the service, `fullscreen-winmgr`, before multiplexing the cameras.
+We need to stop the `fullscreen-winmgr` service before multiplexing the camera streams.
 ```sh
 slay fullscreen-winmgr
 camera_mux -n 2
