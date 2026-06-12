@@ -1,6 +1,6 @@
 id: configure-multiple-camera-sources-on-RPI5
-title: Codelabs to configure multiple camera sources on RPI5
-summary: Learn how to configure multiple camera sources on RPI5
+title: Configure multiple camera sources on RPI5
+summary: Learn how to configure multiple camera sources on RPI5 on QNX 8.0
 categories: codelabs, setup, qnx-sensor-framework
 tags: beginner
 difficulty: 1
@@ -214,9 +214,7 @@ The output will be as follows:
   913444 sensor -U 521:521 -b external -r /data/share/sensor -c /system/etc/config/sensor/rpi5_camera_module3.conf
 ```
 
-If Logitech C920x (or C920) was also enabled as the third camera,
-
-The output will be as follows:
+If Logitech C920x (or C920) was also enabled as the third camera, the output will be as follows:
 ```sh
 [root@qnxpi ~]# pidin ar | grep sensor
   913444 sensor -U 521:521 -b external -r /data/share/sensor -c /system/etc/config/sensor/usb_and_cam3.conf
