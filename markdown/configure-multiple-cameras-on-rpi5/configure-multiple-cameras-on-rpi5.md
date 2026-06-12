@@ -327,7 +327,7 @@ Jan 01 00:00:11.250          sensor_service.913444                debug      1  
 ```
 If the Camera Module 3 is not detected, inspect the ribbon cables to ensure they are firmly connected to the Raspberry Pi 5 ports.
 
-### Validate the Logitech camera is detected
+### Validate that the Logitech camera is detected
 Run `usb` or `usb -vvv` if more details are required.
 
 You will find similar output as follows:
