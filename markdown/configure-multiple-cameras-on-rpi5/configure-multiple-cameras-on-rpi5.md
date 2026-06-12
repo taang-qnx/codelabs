@@ -47,7 +47,7 @@ sudo apk add \
 ```
 
 ## Hardware Configuration
-### Connect 2 Camera Module 3 to the DISP0 and DISP1 ports as follows:
+### Connect two Camera Module 3 units to the DISP0 and DISP1 ports as follows:
 ![Connect 2 Camera Module 3](connect-2-camera-module-3.jpg)
 
 ### Connect Logitech C920x (or C920) to one of the USB ports as follows:
