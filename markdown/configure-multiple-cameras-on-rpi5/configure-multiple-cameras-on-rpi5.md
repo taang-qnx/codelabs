@@ -12,7 +12,7 @@ feedback_link: https://github.com/qnx/codelabs/issues
 # Configure multiple camera sources on Raspberry PI 5
 
 ## Introduction
-We are preparing the instruction for configure multiple camera sources on Raspberry PI 5.  In this codelab, instructions are provided to enable multiple camera sources.
+This codelab describes how to configure multiple camera sources on the Raspberry Pi 5. The instructions provided enable support for multiple camera inputs.
 
 ## Prerequisites
 ### Hardware
