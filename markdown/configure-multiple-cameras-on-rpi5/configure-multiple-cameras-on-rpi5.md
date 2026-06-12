@@ -302,7 +302,7 @@ slay fullscreen-winmgr
 camera_mux -n 2
 ```
 
-If Logitech C920x (or C920) was also enabled as third camera, run
+If Logitech C920x (or C920) was also enabled as a third camera, run
 ```sh
 camera_mux -n 3
 ```
