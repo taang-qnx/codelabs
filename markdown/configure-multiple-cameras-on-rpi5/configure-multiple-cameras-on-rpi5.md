@@ -311,7 +311,7 @@ The following is the moment when three cameras are multipexed
 ![Multiplex 3 Cameras](multiplex-cameras.jpg)
 
 ## Troubleshooting
-### Validate the 2 camera module 3 are detected
+### Validate that the two Camera Module 3 units are detected
 Run `slog2info -b sensor_service`
 You will find similar output as follows:
 ```sh
