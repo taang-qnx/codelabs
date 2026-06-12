@@ -21,7 +21,8 @@ We are preparing the instruction for configure multiple camera sources on Raspbe
 - 1 x Logitech C920x (or C920)
 
 ### QuickStart Target Image (QSTI)
-- At the host, launch QNX Software Center and install the QSTI image of QNX 8.0, say, com.qnx.qnx800.quickstart.rpi5/0.5.0.00319T202605190151L
+- On the host, launch QNX Software Center and install the QSTI image for QNX 8.0, for example:
+com.qnx.qnx800.quickstart.rpi5/0.5.0.00319T202605190151L
 - Use Raspberry PI Imager or other imaging tool to load the image onto the SD card
 - Insert the SD card toe the RPI5 and plugin in power source
 
