@@ -242,9 +242,7 @@ total 0
 -rw-rw----  1 521 sensor 0 1970-01-01 02:20 data2
 ```
 
-If Logitech C920x (or C920) was also enabled as third camera
-
-The output will be as follows:
+If a Logitech C920x (or C920) is also enabled as a third camera, the output will be as follows:
 ```sh
 [root@qnxpi ~]# ls -al /dev/sensor
 total 0
