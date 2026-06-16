@@ -62,7 +62,7 @@ To enable 2 camera modules, we need to
 
 
 To achieve this:
-- Login as `root`
+- Log in as `root`
 ```sh
 sudo su -
 ```
