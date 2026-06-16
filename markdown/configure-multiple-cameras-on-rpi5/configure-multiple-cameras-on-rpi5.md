@@ -253,7 +253,7 @@ total 0
 -rw-rw----  1 521 sensor 0 1970-01-01 02:20 data2
 ```
 
-### Validate the IRQs are enabled for the 2 Camera Module 3
+### Validate the IRQs are enabled for the two Camera Module 3 units
 run `msix-rp1`
 
 The output will be as follows:
