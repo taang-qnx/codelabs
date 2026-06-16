@@ -16,7 +16,7 @@ This codelab describes how to configure multiple camera sources on the Raspberry
 
 ## Prerequisites
 ### Hardware
-- 1 x Raspberry PI 5
+- 1 x Raspberry Pi 5
 - 2 x Camera Module 3
 - 1 x Logitech C920x (or C920)
 
