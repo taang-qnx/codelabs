@@ -53,7 +53,7 @@ sudo apk add \
 ### Connect Logitech C920x (or C920) to one of the USB ports as follows:
 ![Connect Logitech C920x](connect-logitech-c920x.jpg)
 
-## Startup script configuration
+## Startup Script Configuration
 ### Enable 2 Camera Modules
 To enable 2 camera modules, we need to
 - Enable IRQ 11, 13, 47, 48 with `msix-rp1` and `gpio-rp1`
