@@ -290,7 +290,7 @@ If a USB keyboard is attached to RPI5, you can press `Alt` + `Tab` to switch bet
 ### Multiplex the cameras
 The cameras can be multiplexed at the same time using `camera_mux -n N`, where N is the total number of cameras to be multiplexed.
 
-However, currently the process `fullscreen-winmgr` restricts on this.
+However, currently the `fullscreen-winmgr` process restricts this.
 
 We need to stop the `fullscreen-winmgr` service before multiplexing the camera streams.
 ```sh
