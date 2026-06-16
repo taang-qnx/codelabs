@@ -136,7 +136,7 @@ index eecdafa..6c0a345 100755
 ```
 
 ### Enable Logitech C920x (or C920) as the third camera
-To enable Logitech C920x in addition to the 2 camera module 3,
+To enable Logitech C920x in addition to the two Camera Module 3 units,
 
 - Duplicate `/usr/etc/config/sensor/rpi5_camera_module3.conf` to `/usr/etc/config/sensor/usb_and_cam3.conf`
 ```sh
