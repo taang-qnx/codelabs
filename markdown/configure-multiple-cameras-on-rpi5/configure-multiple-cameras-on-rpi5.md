@@ -61,7 +61,7 @@ To enable 2 camera modules, we need to
 - Enable `sensor` at startup with `rpi5_camera_module3.conf`
 
 
-To achieve above,
+To achieve this:
 - Login as `root`
 ```sh
 sudo su -
