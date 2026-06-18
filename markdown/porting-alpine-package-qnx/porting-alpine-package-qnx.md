@@ -38,7 +38,7 @@ This codelab walks through the full process using **gtk4** as the worked example
 
 ## How it works — Overview
 
-Alpine Linux maintains thousands of packages in their public aports tree. Each package lives in a folder under a category (e.g. `extra/gtk4/`) and consists of:
+Alpine Linux maintains thousands of packages in their public aports tree. Each package lives in a folder under a category (e.g. `community/gtk4.0/`) and consists of:
 
 * An `APKBUILD` file: the build recipe (version, source URL, dependencies, build steps)
 * Zero or more `.patch` files: source-level fixes applied before building
@@ -75,7 +75,7 @@ Open the result that matches the package name. On the package page, find the **G
 For gtk4 the path is:
 
 ```
-https://gitlab.alpinelinux.org/alpine/aports/-/tree/3.23-stable/extra/gtk4
+https://gitlab.alpinelinux.org/alpine/aports/-/tree/3.23-stable/community/gtk4.0
 ```
 
 ---
@@ -87,7 +87,7 @@ In your aports clone on the QNX target, create the directory for the new package
 * If the package lives under `main` in the upstream Alpine aports tree, port it to `core` in QNX aports
 * If the package lives under `community` in upstream Alpine, port it to `extra` in QNX aports
 
-gtk4 is under `extra/` in Alpine (community), so:
+gtk4 is under `community` in Alpine, so:
 
 ```bash
 mkdir -p ~/aports/extra/gtk4
@@ -97,13 +97,13 @@ cd ~/aports/extra/gtk4
 Download the APKBUILD:
 
 ```bash
-curl -O https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.23-stable/extra/gtk4/APKBUILD
+curl -O https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.23-stable/community/gtk4.0/APKBUILD
 ```
 
 Check if there are any patch files in the same directory on GitLab. If there are, download each one:
 
 ```bash
-curl -O https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.23-stable/extra/gtk4/some-fix.patch
+curl -O https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.23-stable/community/gtk4.0/some-fix.patch
 ```
 
 Do the same for any other supporting files (init scripts, `.desktop` entries, etc.).
@@ -321,7 +321,7 @@ Watch the output for errors. Common failure categories and what to look for:
 If all tests pass and the build succeeds, install the resulting `.apk` to verify it loads correctly:
 
 ```bash
-sudo apk add --allow-untrusted ~/packages/extra/x86_64/gtk4-<version>-r0.x86_64.apk
+sudo apk add --allow-untrusted ~/packages/extra/x86_64/gtk4-<version>-r0.apk
 ```
 
 ---
